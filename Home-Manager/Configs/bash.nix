@@ -50,10 +50,10 @@
       vps = "bash ~/vpn-switcher.sh";
       edky = "sops ~/NixOS/secrets/secrets.yaml";
       dlm = "scp -r john@192.168.122.94:~/Downloads/t ~/Downloads/";
-      ns-c = "cd ~/Documents/Programming/Shells/C && nix-shell && codium ./";
-      ns-cs = ''cd ~/Documents/Programming/Shells/CSharp && nix-shell --run "codium ./"'';
-      ns-py = ''cd ~/Documents/Programming/Shells/Python312 && nix-shell --run "codium ./"'';
-      ns-rs = ''cd ~/Documents/Programming/Shells/Rust && nix-shell --run "codium ./"'';
+      ns-c = "cd ~/Documents/Programming/Shells/C && nix-shell && codium ./ && exit";
+      ns-cs = ''cd ~/Documents/Programming/Shells/CSharp && nix-shell --run "codium ./ && exit"'';
+      ns-py = ''cd ~/Documents/Programming/Shells/Python312 && nix-shell --run "codium ./ && exit"'';
+      ns-rs = ''cd ~/Documents/Programming/Shells/Rust && nix-shell --run "codium ./ && exit"'';
     };
   };
 }
