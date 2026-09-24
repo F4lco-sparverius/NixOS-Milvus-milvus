@@ -37,7 +37,7 @@
     vscodium
     rawtherapee
 
-    brave
+    #brave
 
     #cli programs
     fastfetch
