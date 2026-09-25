@@ -36,8 +36,7 @@
     picard
     vscodium
     rawtherapee
-
-    #brave
+    tor-browser
 
     #cli programs
     fastfetch
