@@ -25,14 +25,14 @@
   systemd.services.navidrome-dedup-trigger = {
     description = "Install duplicate-prevention trigger in Navidrome DB";
 
-    wantedBy = ["navidrome.service"];
-    partOf = ["navidrome.service"];
     after = ["navidrome.service"];
+    requires = [ "navidrome.service" ];
 
     serviceConfig = {
       Type = "oneshot";
       User = "navidrome";
       RemainAfterExit = true;
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
     };
 
     script = ''
