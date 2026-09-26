@@ -59,6 +59,9 @@
       "
 
       echo "Trigger installed successfully"
+
+      ${pkgs.sqlite}/bin/sqlite3 /var/lib/navidrome/navidrome.db \
+        "UPDATE playlist SET sync = 0 WHERE sync = 1;"
     '';
   };
 
