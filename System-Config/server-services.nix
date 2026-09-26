@@ -10,7 +10,7 @@
       Address = "0.0.0.0";
       Port = 4533;
       DataFolder = "/var/lib/navidrome";
-      ScannerEnabled = true;
+      ScannerEnabled = false;
       LogLevel = "info";
       LastFM.Enabled = true;
       Tags.Artists.Split = [" / " " feat. " " feat " " ft. " " ft " "/ " "; " " & " " , " ", " "," "/" "&" "  "];
