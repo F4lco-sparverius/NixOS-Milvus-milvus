@@ -59,6 +59,7 @@
     jellyfin
 
     #tmp
+    nasm
   ];
 
   #declaration to not install these default kde programs
