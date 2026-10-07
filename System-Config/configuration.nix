@@ -60,6 +60,8 @@
 
     #tmp
     nasm
+    rhash
+    xxd
   ];
 
   #declaration to not install these default kde programs
