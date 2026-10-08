@@ -62,6 +62,7 @@
     nasm
     rhash
     xxd
+    mullvad-vpn
   ];
 
   #declaration to not install these default kde programs
