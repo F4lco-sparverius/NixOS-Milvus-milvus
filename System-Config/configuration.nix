@@ -65,8 +65,6 @@
     mullvad-vpn
   ];
 
-  services.mullvad-vpn.enable = true;
-
   #declaration to not install these default kde programs
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa
@@ -105,6 +103,7 @@
   };
 
   #network stuff
+  services.mullvad-vpn.enable = true;
   networking.hostName = "Milvus-milvus";
   networking.networkmanager.enable = true;
   hardware.bluetooth = {
