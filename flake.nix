@@ -9,17 +9,20 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    wordcraft.url = "github:storytold/wordcraft";
-    #wordcraft.inputs.follows = "nixpkgs";
+    nix-craftapps = {
+      url = "github:olafkfreund/nix-craftapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {self, nixpkgs, sops-nix, ...} @ inputs:
+  outputs = {self, nixpkgs, sops-nix, nix-craftapps, ...} @ inputs:
   {
     nixosConfigurations.Milvus-milvus = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./System-Config/configuration.nix
         sops-nix.nixosModules.sops
+        nix-craftapps.nixosModules.default
       ];
     };
   };
