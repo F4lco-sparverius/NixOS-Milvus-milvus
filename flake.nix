@@ -8,21 +8,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-craftapps = {
-      url = "github:olafkfreund/nix-craftapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = {self, nixpkgs, sops-nix, nix-craftapps, ...} @ inputs:
+  outputs = {self, nixpkgs, sops-nix, ...} @ inputs:
   {
     nixosConfigurations.Milvus-milvus = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./System-Config/configuration.nix
         sops-nix.nixosModules.sops
-        nix-craftapps.nixosModules.default
       ];
     };
   };

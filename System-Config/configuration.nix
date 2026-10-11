@@ -66,11 +66,6 @@
     exiftool
   ];
 
-  programs.craftapps = {
-    enable = true;
-    apps.wordcraft.enable = true;
-  };
-
   #declaration to not install these default kde programs
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa
