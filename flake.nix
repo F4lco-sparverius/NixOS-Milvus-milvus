@@ -10,7 +10,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-craftapps = {
-      url = "github:storytold/wordcraft";
+      url = "github:olafkfreund/nix-craftapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
