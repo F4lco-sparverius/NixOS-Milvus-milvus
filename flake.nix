@@ -10,7 +10,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     wordcraft.url = "github:storytold/wordcraft";
-    wordcraft.inputs.follows = "nixpkgs";
+    #wordcraft.inputs.follows = "nixpkgs";
   };
 
   outputs = {self, nixpkgs, sops-nix, ...} @ inputs:
