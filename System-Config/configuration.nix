@@ -72,6 +72,7 @@
     kdePackages.discover
     kdePackages.konsole
   ];
+  programs.kde-pim.enable = false; #removing useless kde apps
 
   #sops configuration for assigning secrets.yaml secrets to a value 
   #(the value is expressed as a path to the secret) that can be referenced in this configuration
