@@ -20,7 +20,7 @@
   environment.systemPackages = with pkgs; [
     #gui programs
     kdePackages.dolphin
-    libreoffice hunspell hunspellDicts.en_GB
+    libreoffice hunspellDicts.en_GB
     onlyoffice-desktopeditors
     firefox
     sqlitebrowser
