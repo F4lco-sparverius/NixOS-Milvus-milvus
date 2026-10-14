@@ -22,7 +22,7 @@
     kdePackages.dolphin
     libreoffice 
     hunspell
-    hunspellDicts.en_GB
+    hunspellDicts.en_GB-ise
     onlyoffice-desktopeditors
     firefox
     sqlitebrowser
@@ -67,8 +67,6 @@
     mullvad-vpn
     exiftool
   ];
-
-  environment.pathsToLink = [ "/share/hunspell" ];
 
   #declaration to not install these default kde programs
   environment.plasma6.excludePackages = with pkgs; [
