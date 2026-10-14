@@ -68,6 +68,8 @@
     exiftool
   ];
 
+  environment.pathsToLink = [ "/share/hunspell" ];
+
   #declaration to not install these default kde programs
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa
