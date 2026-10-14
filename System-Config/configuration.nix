@@ -21,7 +21,8 @@
     #gui programs
     kdePackages.dolphin
     libreoffice 
-    hunspell.en_GB
+    hunspell
+    hunspellDicts.en_GB
     onlyoffice-desktopeditors
     firefox
     sqlitebrowser
