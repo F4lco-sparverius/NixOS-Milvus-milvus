@@ -61,11 +61,9 @@
     jellyfin
 
     #tmp
-    nasm
     rhash
     xxd
     mullvad-vpn
-    exiftool
   ];
 
   #declaration to not install these default kde programs
