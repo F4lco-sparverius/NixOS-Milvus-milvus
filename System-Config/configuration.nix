@@ -7,7 +7,7 @@ let
     version = "0.8.0";
     src = pkgs.fetchurl {
       url = "https://github.com/storytold/wordcraft/releases/download/v0.8.0/wordcraft-0.8.0-linux-x86_64.tar.gz";
-      hash = "";
+      hash = "sha256-Ds4Hzz2RuSPf2A+QMQ4EmDveZvAnnGtg3c6JWW3eDd8=";
     };
     nativeBuildInputs = [ pkgs.autoPatchelfHook ];
     buildInputs = [ pkgs.stdenv.cc.cc.lib ];
@@ -16,10 +16,10 @@ let
       libglvnd
       vulkan-loader
       libxkbcommon
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXrandr
+      libx11
+      libxcursor
+      libxi
+      libxrandr
     ];
     installPhase = ''
       install -Dm755 wordcraft $out/bin/wordcraft
