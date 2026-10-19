@@ -17,54 +17,68 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    #gui programs
-    kdePackages.dolphin
-    libreoffice 
-    hunspell
-    hunspellDicts.en_GB-ise
-    onlyoffice-desktopeditors
-    firefox
-    sqlitebrowser
-    vlc
-    kitty
-    virt-manager
-    krita
-    proton-pass
-    feishin
-    telegram-desktop
-    planify
-    mkvtoolnix
-    picard
-    vscodium
-    rawtherapee
-    tor-browser
+  let
+    wordcraft = import 
+      ( pkgs.fetchFromGitHub 
+        { 
+          owner = "storytold"; 
+          repo = "wordcraft"; 
+          rev= "e6c5a701ddff5be16e266028168c70658aae39d9";
+          sha256= "sha256-r8D+wZP4UqhIY3k+beMzdp9yh44hBxnNq8hh/Bk6C08=";
+        }
+      );
+  in
+    {
+      environment.systemPackages = with pkgs; [
+        #gui programs
+        kdePackages.dolphin
+        libreoffice 
+        hunspell
+        hunspellDicts.en_GB-ise
+        onlyoffice-desktopeditors
+        firefox
+        sqlitebrowser
+        vlc
+        kitty
+        virt-manager
+        krita
+        proton-pass
+        feishin
+        telegram-desktop
+        planify
+        mkvtoolnix
+        picard
+        vscodium
+        rawtherapee
+        tor-browser
+        wordcraft
 
-    #cli programs
-    fastfetch
-    fzf
-    gitFull
-    bat
-    htop
-    yt-dlp
-    lm_sensors
-    
-    #dependencies
-    qemu
-    zip
-    ly
-    age sops
+        #cli programs
+        fastfetch
+        fzf
+        gitFull
+        bat
+        htop
+        yt-dlp
+        lm_sensors
+        
+        #dependencies
+        qemu
+        zip
+        ly
+        age sops
 
-    #services
-    tailscale
-    navidrome
-    jellyfin
+        #services
+        tailscale
+        navidrome
+        jellyfin
 
-    #tmp
-    rhash
-    xxd
-    mullvad-vpn
-  ];
+        #tmp
+        rhash
+        xxd
+        mullvad-vpn
+      ];
+    }
 
   #declaration to not install these default kde programs
   environment.plasma6.excludePackages = with pkgs; [
