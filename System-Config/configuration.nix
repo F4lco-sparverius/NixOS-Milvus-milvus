@@ -11,7 +11,7 @@ let
         sha256= "sha256-r8D+wZP4UqhIY3k+beMzdp9yh44hBxnNq8hh/Bk6C08=";
       }
     );
-In
+in
 {
   #imports: hardware config & home-manager module & configuration for all server related services
   imports = [
