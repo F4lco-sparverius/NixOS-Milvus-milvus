@@ -52,13 +52,11 @@ in
     libreoffice 
     hunspell
     hunspellDicts.en_GB-ise
-    onlyoffice-desktopeditors
     firefox
     sqlitebrowser
     vlc
     kitty
     virt-manager
-    krita
     proton-pass
     feishin
     telegram-desktop
