@@ -2,15 +2,30 @@
 {pkgs, config, lib, inputs, ...}:
 
 let
-  wordcraft = import 
-    ( pkgs.fetchFromGitHub 
-      { 
-        owner = "storytold"; 
-        repo = "wordcraft"; 
-        rev= "e6c5a701ddff5be16e266028168c70658aae39d9";
-        sha256= "sha256-r8D+wZP4UqhIY3k+beMzdp9yh44hBxnNq8hh/Bk6C08=";
-      }
-    );
+  wordcraft = pkgs.stdenv.mkDerivation rec {
+    pname = "wordcraft";
+    version = "0.8.0";
+    src = pkgs.fetchurl {
+      url = "https://github.com/storytold/wordcraft/releases/download/v0.8.0/wordcraft-0.8.0-linux-x86_64.tar.gz";
+      hash = "";
+    };
+    nativeBuildInputs = [ pkgs.autoPatchelfHook ];
+    buildInputs = [ pkgs.stdenv.cc.cc.lib ];
+    runtimeDependencies = with pkgs; [
+      wayland
+      libglvnd
+      vulkan-loader
+      libxkbcommon
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libXi
+      xorg.libXrandr
+    ];
+    installPhase = ''
+      install -Dm755 wordcraft $out/bin/wordcraft
+      install -Dm755 wordcraft-cli $out/bin/wordcraft-cli
+    '';
+  };
 in
 {
   #imports: hardware config & home-manager module & configuration for all server related services
