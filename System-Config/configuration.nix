@@ -66,6 +66,7 @@ in
     vscodium
     rawtherapee
     tor-browser
+    wordcraft
 
     #cli programs
     fastfetch
