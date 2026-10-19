@@ -22,8 +22,10 @@ let
       libxrandr
     ];
     installPhase = ''
-      install -Dm755 wordcraft $out/bin/wordcraft
-      install -Dm755 wordcraft-cli $out/bin/wordcraft-cli
+      runHook preInstall
+      mkdir -p $out
+      cp -r bin share $out/
+      runHook postInstall
     '';
   };
 in
