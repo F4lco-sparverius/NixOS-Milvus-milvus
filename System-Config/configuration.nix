@@ -1,6 +1,6 @@
 #./System-Config/configuration.nix
 {pkgs, config, lib, inputs, ...}:
-
+#derivation build for wordcraft from github, not in nixpkgs yet
 let
   wordcraft = pkgs.stdenv.mkDerivation rec {
     pname = "wordcraft";
