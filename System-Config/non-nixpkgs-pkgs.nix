@@ -57,31 +57,4 @@
       runHook postInstall
     '';
   };
-
-  lightcraft = pkgs.stdenv.mkDerivation rec {
-    pname = "lightcraft";
-    version = "0.13.0";
-    src = pkgs.fetchurl {
-      url = "https://github.com/storytold/lightcraft/releases/download/v0.13.0/lightcraft-0.13.0-linux-x86_64.tar.gz";
-      hash = "sha256-hzx5XmQeqMNF4C5IlfbCZZAV5TFCD2g1LKNCGqm47c0=";
-    };
-    nativeBuildInputs = [ pkgs.autoPatchelfHook ];
-    buildInputs = [ pkgs.stdenv.cc.cc.lib ];
-    runtimeDependencies = with pkgs; [
-      wayland
-      libglvnd
-      vulkan-loader
-      libxkbcommon
-      libx11
-      libxcursor
-      libxi
-      libxrandr
-    ];
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out
-      cp -r bin share $out/
-      runHook postInstall
-    '';
-  };
 }

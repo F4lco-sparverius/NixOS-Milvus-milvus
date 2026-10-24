@@ -43,7 +43,6 @@ in
     tor-browser
     non-nixpkgs-pkgs.wordcraft
     non-nixpkgs-pkgs.deckcraft
-    non-nixpkgs-pkgs.lightcraft
 
     #cli programs
     fastfetch
