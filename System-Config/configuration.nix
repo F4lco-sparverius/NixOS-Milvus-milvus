@@ -1,33 +1,8 @@
 #./System-Config/configuration.nix
 {pkgs, config, lib, inputs, ...}:
-#derivation build for wordcraft from github, not in nixpkgs yet
+#importing derivation build for non-nixpkgs pkgs from github
 let
-  wordcraft = pkgs.stdenv.mkDerivation rec {
-    pname = "wordcraft";
-    version = "0.8.0";
-    src = pkgs.fetchurl {
-      url = "https://github.com/storytold/wordcraft/releases/download/v0.8.0/wordcraft-0.8.0-linux-x86_64.tar.gz";
-      hash = "sha256-Ds4Hzz2RuSPf2A+QMQ4EmDveZvAnnGtg3c6JWW3eDd8=";
-    };
-    nativeBuildInputs = [ pkgs.autoPatchelfHook ];
-    buildInputs = [ pkgs.stdenv.cc.cc.lib ];
-    runtimeDependencies = with pkgs; [
-      wayland
-      libglvnd
-      vulkan-loader
-      libxkbcommon
-      libx11
-      libxcursor
-      libxi
-      libxrandr
-    ];
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out
-      cp -r bin share $out/
-      runHook postInstall
-    '';
-  };
+  non-nixpkgs-pkgs = import ./non-nixpkgs-pkgs.nix {inherit pkgs;};
 in
 {
   #imports: hardware config & home-manager module & configuration for all server related services
@@ -66,7 +41,9 @@ in
     vscodium
     rawtherapee
     tor-browser
-    wordcraft
+    non-nixpkgs-pkgs.wordcraft
+    non-nixpkgs-pkgs.deckcraft
+    non-nixpkgs-pkgs.lightcraft
 
     #cli programs
     fastfetch
