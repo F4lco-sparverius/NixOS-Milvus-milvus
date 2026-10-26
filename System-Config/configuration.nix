@@ -43,6 +43,7 @@ in
     tor-browser
     non-nixpkgs-pkgs.wordcraft
     non-nixpkgs-pkgs.deckcraft
+    javaPackages.compiler.temurin-bin.jre-25
 
     #cli programs
     fastfetch
