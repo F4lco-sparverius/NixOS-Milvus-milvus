@@ -92,7 +92,7 @@
       volumes = [ "/var/lib/bedrock:/data" ];
       environment = {
         EULA = "TRUE";
-        VERSION = "1.26.60";
+        VERSION = "1.26.60.6";
         GAMEMODE = "survival";
         DIFFICULTY = "normal";
         ALLOW_CHEATS = "false";
