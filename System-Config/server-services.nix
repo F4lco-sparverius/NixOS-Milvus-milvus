@@ -102,6 +102,7 @@
         ONLINE_MODE = "true";
         DEFAULT_PLAYER_PERMISSION_LEVEL = "operator";
         ALLOW_LIST = "false";
+        MAX_THREADS = "4";
       };
     };
   };
