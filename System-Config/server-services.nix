@@ -83,61 +83,26 @@
     openFirewall = true;
   };
 
-  # BDS is proprietary but free to download/run
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "bedrock-server" ];
-
-  users.users.bedrock = {
-    isSystemUser = true;
-    group = "bedrock";
-    home = "/var/lib/bedrock";
-  };
-  users.groups.bedrock = {};
-
-  # Lets you send console commands to the server (see below)
-  systemd.sockets.bedrock = {
-    wantedBy = [ "sockets.target" ];
-    socketConfig = {
-      ListenFIFO = "/run/bedrock.stdin";
-      SocketUser = "bedrock";
-      SocketMode = "0660";
-      RemoveOnStop = true;
-      FlushPending = true;
+  virtualisation.docker.enable = true;
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.bedrock = {
+      image = "itzg/minecraft-bedrock-server";
+      ports = [ "19132:19132/udp" ];
+      volumes = [ "/var/lib/bedrock:/data" ];
+      environment = {
+        EULA = "TRUE";
+        GAMEMODE = "survival";
+        DIFFICULTY = "normal";
+        ALLOW_CHEATS = "false";
+        ONLINE_MODE = "true";
+        DEFAULT_PLAYER_PERMISSION_LEVEL = "operator";
+      };
     };
   };
 
-  systemd.services.bedrock = {
-    description = "Minecraft Bedrock Server";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    requires = [ "bedrock.socket" ];
+  systemd.tmpfiles.rules = [ "d /var/lib/bedrock 0755 root root -" ];
 
-    preStart = ''
-      cat > server.properties <<EOF
-      server-name=Home Server
-      gamemode=survival
-      difficulty=normal
-      allow-cheats=false
-      online-mode=true
-      allow-list=false
-      default-player-permission-level=operator
-      level-name=world
-      server-port=19132
-      EOF
-    '';
-
-    serviceConfig = {
-      ExecStart = "${pkgs.bedrock-server}/bin/bedrock_server";
-      WorkingDirectory = "/var/lib/bedrock";
-      StateDirectory = "bedrock";
-      User = "bedrock";
-      Group = "bedrock";
-      Restart = "always";
-      StandardInput = "socket";
-      StandardOutput = "journal";
-      Environment = "LD_LIBRARY_PATH=.";
-    };
-  };
-
-  networking.firewall.allowedUDPPorts = [ 19132 ];
+  services.tailscale.enable = true;
+  networking.firewall.interfaces."tailscale0".allowedUDPPorts = [ 19132 ];
 }
