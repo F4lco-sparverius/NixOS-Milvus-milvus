@@ -76,19 +76,22 @@
     cacheDir = "/var/cache/jellyfin";
     logDir = "/var/log/jellyfin";
   };
-
-  #enable tailscale for non-lan access
+  # enable tailscale for non-lan access
   services.tailscale = {
     enable = true;
     openFirewall = true;
   };
 
   virtualisation.docker.enable = true;
+
   virtualisation.oci-containers = {
     backend = "docker";
     containers.bedrock = {
       image = "itzg/minecraft-bedrock-server";
-      ports = [ "19132:19132/udp" ];
+      ports = [
+        "19132:19132/udp"
+        "19132:19132/tcp"
+      ];
       volumes = [ "/var/lib/bedrock:/data" ];
       environment = {
         EULA = "TRUE";
@@ -106,5 +109,5 @@
   systemd.tmpfiles.rules = [ "d /var/lib/bedrock 0755 root root -" ];
 
   networking.firewall.allowedUDPPorts = [ 19132 ];
-  # networking.firewall.interfaces."tailscale0".allowedUDPPorts = [ 19132 ];
+  networking.firewall.allowedTCPPorts = [ 19132 ];
 }
