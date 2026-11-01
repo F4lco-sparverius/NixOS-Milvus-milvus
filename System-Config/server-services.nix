@@ -103,6 +103,5 @@
 
   systemd.tmpfiles.rules = [ "d /var/lib/bedrock 0755 root root -" ];
 
-  services.tailscale.enable = true;
   networking.firewall.interfaces."tailscale0".allowedUDPPorts = [ 19132 ];
 }
