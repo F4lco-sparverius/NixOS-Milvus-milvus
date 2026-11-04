@@ -97,11 +97,16 @@
         EULA = "TRUE";
         VERSION = "1.26.60.6";
         GAMEMODE = "survival";
-        DIFFICULTY = "normal";
+        DIFFICULTY = "peacful";
         ALLOW_CHEATS = "false";
+
+        LEVEL_SEED = "1920597807115725671";
+        LEVEL_NAME = "Love Island";
+
         ONLINE_MODE = "true";
         DEFAULT_PLAYER_PERMISSION_LEVEL = "operator";
         ALLOW_LIST = "false";
+
         MAX_THREADS = "4";
       };
     };
