@@ -97,7 +97,7 @@
         EULA = "TRUE";
         VERSION = "1.26.60.6";
         GAMEMODE = "survival";
-        DIFFICULTY = "peacful";
+        DIFFICULTY = "peaceful";
         ALLOW_CHEATS = "false";
 
         LEVEL_SEED = "1920597807115725671";
