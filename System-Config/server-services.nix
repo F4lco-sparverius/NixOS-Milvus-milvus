@@ -76,6 +76,13 @@
     cacheDir = "/var/cache/jellyfin";
     logDir = "/var/log/jellyfin";
   };
+
+  services.immmich = {
+    enable = true;
+    openFirewall = true;
+    user = "immich";
+    group = "immich";
+  }
   # enable tailscale for non-lan access
   services.tailscale = {
     enable = true;

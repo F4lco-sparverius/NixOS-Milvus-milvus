@@ -63,6 +63,7 @@ in
     tailscale
     navidrome
     jellyfin
+    immich
 
     #tmp
     rhash
