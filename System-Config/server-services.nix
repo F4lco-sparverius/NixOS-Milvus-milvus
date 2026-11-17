@@ -83,6 +83,7 @@
     user = "immich";
     group = "immich";
   };
+  
   # enable tailscale for non-lan access
   services.tailscale = {
     enable = true;
