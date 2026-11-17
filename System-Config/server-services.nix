@@ -77,7 +77,7 @@
     logDir = "/var/log/jellyfin";
   };
 
-  services.immmich = {
+  services.immich = {
     enable = true;
     openFirewall = true;
     user = "immich";
