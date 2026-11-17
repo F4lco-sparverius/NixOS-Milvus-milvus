@@ -82,6 +82,7 @@
     openFirewall = true;
     user = "immich";
     group = "immich";
+    host = "0.0.0.0";
   };
   
   # enable tailscale for non-lan access
