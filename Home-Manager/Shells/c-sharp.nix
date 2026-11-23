@@ -18,6 +18,9 @@
         buildInputs = with pkgs; [
           openssl
         ];
+        shellHook = '''
+          export TMPDIR=/tmp
+        ''';
       }
     '';
   };
